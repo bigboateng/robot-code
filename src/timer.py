@@ -22,9 +22,11 @@ def talker():
     rospy.init_node("timer_node", anonymous=True)
     timer_pub = rospy.Publisher("timer", String, queue_size=10)
     timeElapsed = Timer()
+    rate = rospy.Rate(1)
     while not rospy.is_shutdown():
         time = timeElapsed.get_time_hhmmss()
         timer_pub.publish(time)
+        rate.sleep()
 
 
 
